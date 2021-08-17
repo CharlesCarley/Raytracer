@@ -28,9 +28,3 @@
 [submodule "Extern/bAscii"]
 	path = Extern/bAscii
 	url = https://github.com/CharlesCarley/bAscii.git
-[submodule "Design/Extern"]
-	path = Design/Extern
-	url = https://github.com/CharlesCarley/DoxygenTemplate.git
-[submodule "Extern/Animation"]
-	path = Extern/Animation
-	url = https://github.com/CharlesCarley/Animation.git
