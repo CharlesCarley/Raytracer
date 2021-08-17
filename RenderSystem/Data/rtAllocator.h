@@ -27,10 +27,10 @@
 
 #include "RenderSystem/Data/rtBackendTypes.h"
 #include "Utils/skDisableWarnings.h"
+#include <exception>
 
 #ifdef USING_CUDA
 #include <cuda_runtime_api.h>
-#include <exception>
 
 /// <summary>
 ///

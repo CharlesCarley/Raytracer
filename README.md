@@ -33,8 +33,9 @@ Usage: Viewer.exe <options>
 
 As an example, the following image was rendered using the bAscii file.
 ```
-Global:  { scene = "Scene"; }
-
+Global:  {
+    scene = "Scene";
+}
 SceneLibrary: {
     Scene: "Scene" {
         objects  = "ICam", 
@@ -46,39 +47,41 @@ SceneLibrary: {
                     "L.1",
                     "L.2",
                     "L.3";
-        zenith   = 0.95, 0.75, 0.95;
-        horizon  = 0.3, 0.2, 0.65;
+        zenith   = 0.3, 0.2, 0.65;
+        horizon   = 0.95, 0.75, 0.95;
         flags    = 1;
     }
 }
 
 ShapeLibrary: {
-    Cube:   "Cube.1"   { extent = 0.5; material = "Grey"; }
-    Cube:   "Cube.2"   { extent = 1.5; material = "Mat"; }
-    Sphere: "Sphere.1" { radius = 0.5; material = "Red"; }
+    Cube:   "PL_001"   { extent = 0.5; material = "MA_001"; }
+    Cube:   "CU_001"   { extent = 1.5; material = "MA_CU"; }
+    Sphere: "Sphere.1" { radius = 0.5; material = "MA_SP"; }
 }
 
 ObjectLibrary: {
-    Object: "C.1" { data = "Cube.1";   location =  0,  0, -1; scale = 80, 80, 1; }
-    Object: "C.2" { data = "Cube.2";   location =  0,  5,  0; scale =  1,  1, 1; }
-    Object: "C.3" { data = "Cube.2";   location =  8, -5,  0; scale =  1,  1, 1; }
-    Object: "C.4" { data = "Cube.2";   location = -8,  5,  0; scale =  1,  1, 1; }
-    Object: "S.1" { data = "Sphere.1"; location =  0,  0,  0; scale =  1,  5, 1; }
-    Object: "L.1" { data = "Point.1";  location =  0,  0, 10; }
-    Object: "L.2" { data = "Point.1";  location =  0, -5,  5; }
-    Object: "L.3" { data = "Point.1";  location =  5,  5,  5; }
+    Object: "C.1" { data = "PL_001";   location = 0.0, 0.0, -1; scale = 80, 80, 1; }
+    Object: "C.2" { data = "CU_001";   location = 0.0, 5, 0; scale = 1, 1, 1; }
+    Object: "C.3" { data = "CU_001";   location = 8, -5, 0; scale = 1, 1, 1; }
+    Object: "C.4" { data = "CU_001";   location = -8, 5, 0; scale = 1, 1, 1; }
+    Object: "S.1" { data = "Sphere.1"; location = 0.0, 0.0, 0; scale = 1, 5, 1; }
+    Object: "L.1" { data = "Point.1";  location = -5, 5, 7; }
+    Object: "L.2" { data = "Point.1";  location = 5, -5, 7; }
+    Object: "L.3" { data = "Point.2";  location = 5,  5, 10; }
 
     Object: "ICam" {
         data     = "Camera";
-        location = 4, -14, 3;
+        location = 4, -14, 2.5;
         rotation = 0, 0,  0.7853;
     }
+
 }
 
 CameraLibrary: {
     Camera: "Camera" {
         interactive = 1;
         clip        = 0.1, 1000.5;
+        fov         = 78;
     }
 }
 
@@ -86,38 +89,51 @@ LightLibrary: {
     Light: "Point.1" {
         color     = 1,1,1;
         type      = 0;
-        elevation = .1;
-        decay     = .57214;
+        elevation = .2;
+        decay     = .09;
+        radius    = 0.35;
         power     = 60;
+        mode      = 0;
+    }
+    Light: "Point.2" {
+        color     = 1,1,1;
+        type      = 0;
+        elevation = 0.7;
+        decay     = .01;
+        radius    = 0.05;
+        power     = 60;
+        mode      = 0;
     }
 }
 
 MaterialLibrary: {
-    Material: "Grey" {
-        flags     = 1;
-        color     = 0.5,.5,0.5; 
-        ambient   = 1;
-        diffuse   = 0.125;
-        specular  = .01;
+    Material: "MA_001" {
+        flags     = 10;
+        color     = 0.88,0.85,0.98; 
+        ambient   = 0.5;
+        diffuse   = 0.97;
+        specular  = .1;
         hardness  = 2;
     }
-    Material: "Mat" {
-        flags     = 1;
-        color     = 0.9,0.87,0.1456; 
+    Material: "MA_CU" {
+        flags     = 10;
+        color     = 0.9,0.7,0.256; 
         ambient   = 1;
-        diffuse   = 0.125;
-        specular  = 1;
+        diffuse   = 0.825;
+        specular  = 0;
         hardness  = 764;
     }
-    Material: "Red" {
-        flags     = 2;
-        color     = 0.9, 0.7, 0.1;
-        ambient   = 0.8;
-        diffuse   = .5;
+
+    Material: "MA_SP" {
+        flags     = 14;
+        color     = 0.9, 0.6, 0.1;
+        ambient   = 1;
+        diffuse   = 1;
         specular  = 1;
         hardness  = 128;
     }
 }
+
 ```
 
 ```
