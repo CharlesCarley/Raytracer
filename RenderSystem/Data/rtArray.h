@@ -116,7 +116,7 @@ public:
                 this->data[this->size++] = v;
         }
         else
-            throw std::exception("Array limit exceeded.");
+            throw std::runtime_error("Array limit exceeded.");
     }
 
     /// <summary>

@@ -37,10 +37,10 @@ void rtAllocator::setBackend(SKint32 allocator)
     case RT_CUDA:
         m_backend = RT_CUDA;
         if (rtCudaInitialize() != cudaSuccess)
-            throw std::exception("Cuda initialization failed.");
+            throw std::runtime_error("Cuda initialization failed.");
         break;
 #endif
     default:
-        throw std::exception("Unknown allocator");
+        throw std::runtime_error("Unknown allocator");
     }
 }

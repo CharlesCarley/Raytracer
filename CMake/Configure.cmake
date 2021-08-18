@@ -43,6 +43,10 @@ option(RayTracer_SLOW_INTERSECTIONS "." OFF)
 option(RayTracer_BUILD_DOCS         "." ON)
 option(RayTracer_FULL_PROFILE       "." OFF)
 
+if (NOT MSVC)
+	unset(RayTracer_OPT_GEN_INTRINSIC)
+	set(RayTracer_OPT_GEN_INTRINSIC FALSE)
+endif()
 
 set(BUILD_GMOCK   OFF CACHE BOOL "" FORCE)
 set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)

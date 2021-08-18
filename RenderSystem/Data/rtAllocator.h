@@ -28,6 +28,7 @@
 #include "RenderSystem/Data/rtBackendTypes.h"
 #include "Utils/skDisableWarnings.h"
 #include <exception>
+#include <stdexcept>
 
 #ifdef USING_CUDA
 #include <cuda_runtime_api.h>
@@ -44,7 +45,7 @@ struct rtCudaObjectAllocator
 
         const int st = cudaMallocManaged(&mem, sizeof(T));
         if (st != cudaSuccess || mem == nullptr)
-            throw std::exception("Cuda allocation failed.");
+            throw std::runtime_error("Cuda allocation failed.");
         return (T*)mem;
     }
 
@@ -55,7 +56,7 @@ struct rtCudaObjectAllocator
 
         const int st = cudaMallocManaged(&mem, sizeof(T) * capacity);
         if (st != cudaSuccess || mem == nullptr)
-            throw std::exception("Cuda allocation failed.");
+            throw std::runtime_error("Cuda allocation failed.");
         return (T*)mem;
     }
 
@@ -85,7 +86,7 @@ struct rtCpuObjectAllocator
     {
         void* mem = malloc(sizeof(T));
         if (mem == nullptr)
-            throw std::exception("allocation failed.");
+            throw std::runtime_error("allocation failed.");
         return (T*)mem;
     }
 
@@ -94,7 +95,7 @@ struct rtCpuObjectAllocator
     {
         void* mem = malloc(sizeof(T) * capacity);
         if (mem == nullptr)
-            throw std::exception("allocation failed.");
+            throw std::runtime_error("allocation failed.");
         return (T*)mem;
     }
 
@@ -132,7 +133,7 @@ public:
     /// It is set to RT_CPU by default.
     /// If allocator parameter is set to RT_CUDA then
     /// the function rtCudaInitialize will be invoked.
-    /// An exception will be thrown the parameter is anything other
+    /// An runtime_error will be thrown the parameter is anything other
     /// than a rtBackendTypes value or if Cuda fails to initialize.
     /// </remarks>
     static void setBackend(SKint32 allocator);
@@ -153,7 +154,7 @@ public:
             mem = rtCudaObjectAllocator::allocate<T>();
 #endif
         else
-            throw std::exception("allocate: unknown allocator");
+            throw std::runtime_error("allocate: unknown allocator");
         if (mem)
             new (mem) T();
         return mem;
@@ -176,7 +177,7 @@ public:
             mem = rtCudaObjectAllocator::allocateArray<T>(capacity);
 #endif
         else
-            throw std::exception("allocateArray: unknown allocator");
+            throw std::runtime_error("allocateArray: unknown allocator");
 
         return mem;
     }
@@ -200,7 +201,7 @@ public:
             mem = rtCudaObjectAllocator::allocateArray<T>(capacity);
 #endif
         else
-            throw std::exception("reallocateArray: unknown allocator");
+            throw std::runtime_error("reallocateArray: unknown allocator");
 
         if (mem && oldPtr && oldSize > 0)
         {
