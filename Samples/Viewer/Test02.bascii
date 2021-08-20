@@ -4,128 +4,22 @@
 
 SceneLibrary: {
     Scene: "Scene" {
-        objects = "CameraObject",
-                    "Ob.1",
-                    "Ob.2",
-                    "Ob.3",
-                    "Ob.4",
-                    "Ob.5",
-                    "Ob.6",
-                    "L.1",  "L.2";
-        zenith  = 0.25, 0.3, 0.3;
-        horizon = 0.05, 0.05, 0.05;
-
-        # 1  = RM_COLOR_AND_LIGHT
-        # 2  = RM_DISTANCE
-        # 4  = RM_COMPUTED_NORMAL
-        # 8  = RM_DEBUG_TILE
-        # 16 = RM_OUTLINE
-        # 32 = RM_INVERT
-
-        flags = 1;
+        objects = "OB_001", "OB_002";
+        horizon = 0.5,0.5,0.5;
+        zenith  = 1.0,1.0,1.0;
+        flags = 4; 
     }
 }
 
 ShapeLibrary: {
-    Cube: "C.1" {
-        extent   = 1;
-        material = "Green";
-    }
-    Sphere: "C.2" {
-        radius = .25;
-        material = "Red";
-    }
-    Sphere: "C.3" {
-        radius = .25;
-        material = "Blue";
-    }
-    Sphere: "C.4" {
-        radius = .25;
-        material = "Yellow";
-    }
-    Sphere: "C.5" {
-        radius = .25;
-        material = "Black";
-    }
-    Plane: "C.6" {
-        point    = 0,0,0;
-        normal   = 0,0,1;
-        material = "Green";
-    }
+    Cube: "SH_001" { extent = 1; }
 }
 
 ObjectLibrary: {
-    Object: "CameraObject" {
-        data     = "CameraData";
-        location = 0, -5, 1;
-    }
-    Object: "L.1" { data = "Light"; location = 0, 0, 13;}
-    Object: "L.2" { data = "Light"; location = 0, -100, 25;}
-
-    Object: "Ob.1" { data = "C.6"; location = 0, 0, 0;}
-    Object: "Ob.2" { data = "C.5"; location = 0, -5, .5; }
-    Object: "Ob.3" { data = "C.2"; location = 0, 0, .5; }
-    Object: "Ob.4" { data = "C.3"; location = 0, 5, .5; }
-    Object: "Ob.5" { data = "C.2"; location = -1, 1, .5; }
-    Object: "Ob.6" { data = "C.4"; location =  1, 1, .5; }
+    Object: "OB_001" { data = "CA_001"; location = 0, -5,  1; }
+    Object: "OB_002" { data = "SH_001"; location = 0,  0, 0; scale=1,1,1;}
 }
 
 CameraLibrary: {
-    Camera: "CameraData" {
-        interactive = 1;
-
-    }
-}
-
-LightLibrary:{ 
-    Light: "Light" {
-        power     = 2500;
-        decay     = .001;
-        elevation = 1;
-
-    }
-}
-
-MaterialLibrary: {
-    Material: "Blue" {
-        flags    = 14;
-        color    = 0.2, 0.2, 1.0;
-        ambient = 1.0;
-        diffuse = 1;
-        specular = 0.9;
-        hardness = 120;
-    }
-    Material: "Yellow" {
-        flags    = 14;
-        color    = 1.0, 1.0, 0.2;
-        ambient = 1.0;
-        diffuse = 1;
-        specular = 0.9;
-        hardness = 120;
-    }
-    Material: "Black" {
-        flags    = 14;
-        color    = 0,0,0;
-        ambient = 0.65;
-        diffuse = 1;
-        specular = 0.9;
-        hardness = 120;
-    }
-    Material: "Green" {
-        flags    = 14;
-        color    = 0.65, 1.0, 0.55;
-        ambient  = 1.0;
-        diffuse  = 1.0;
-        specular = 0.0;
-        hardness = 0;
-    }
-
-    Material: "Red" {
-        flags    = 14;
-        color    = 1, 0.2, 0.2;
-        ambient = 0.65;
-        diffuse = 1;
-        specular = 0.9;
-        hardness = 120;
-    }
+    Camera: "CA_001" { interactive = 1; clip = 0, 1000; }
 }
