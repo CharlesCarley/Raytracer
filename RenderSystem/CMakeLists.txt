@@ -82,8 +82,6 @@ set(TargetName_DBG_HDR
 # ---------- Math (.h) ----------
 
 set(TargetName_MTH_HDR
-    Math/skBoundingBox.h
-    Math/skBoundingSphere.h
     Math/rtColor.h
     Math/rtVectorTypes.h
     Math/rtMath.h
