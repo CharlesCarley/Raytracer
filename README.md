@@ -1,16 +1,13 @@
 ﻿# RayTracer
 
-Is a small custom ray tracer for educational purposes that runs either on the CPU or GPU. The GPU implementation is written in CUDA. It provides a small code base to work with, and an area to experiment with different ray tracing techniques and optimization tactics. The primary goal is to strike a balance between quality and performance in real-time, as well as to understand the performance limitations of the ray tracing algorithm.
+Is a small custom ray tracer for educational purposes that runs either on the CPU or GPU. The GPU implementation is written with CUDA. It provides a small code base to work with, and an area to experiment with different ray tracing techniques and optimization tactics. The primary goal is to strike a balance between quality and performance in real-time, as well as to understand the performance limitations of the ray tracing algorithm.
 
 
 ## File formats
 
 Scene information is provided with [.bascii](https://github.com/CharlesCarley/bAscii) files. 
 
-The [Viewer](https://github.com/CharlesCarley/RayTracer/tree/master/Samples/Viewer) in the Samples directory is the main entry point.
-
-
-It provides the means to load a file, specify a backend and display a scene. 
+The [Viewer](https://github.com/CharlesCarley/RayTracer/tree/master/Samples/Viewer) in the Samples directory is the main entry point. It provides the means to load a file, specify a backend, and display a scene. 
 
 ### Invoking
 
@@ -36,24 +33,15 @@ Usage: Viewer.exe <options>
 
 As an example, the following image was rendered using the bAscii file.
 
-
 ```
 Global:  {
     scene = "Scene";
 }
 SceneLibrary: {
     Scene: "Scene" {
-        objects  = "ICam", 
-                    "C.1", 
-                    "C.2", 
-                    "C.3", 
-                    "C.4", 
-                    "S.1", 
-                    "L.1",
-                    "L.2",
-                    "L.3";
+        objects  = "ICam", "C.1",  "C.2",  "C.3",  "C.4",  "S.1",  "L.1", "L.2", "L.3";
         zenith   = 0.3, 0.2, 0.65;
-        horizon   = 0.95, 0.75, 0.95;
+        horizon  = 0.95, 0.75, 0.95;
         flags    = 1;
     }
 }
@@ -73,7 +61,6 @@ ObjectLibrary: {
     Object: "L.1" { data = "Point.1";  location = -5, 5, 7; }
     Object: "L.2" { data = "Point.1";  location = 5, -5, 7; }
     Object: "L.3" { data = "Point.2";  location = 5,  5, 10; }
-
     Object: "ICam" {
         data     = "Camera";
         location = 4, -14, 2.5;
@@ -138,15 +125,9 @@ MaterialLibrary: {
         hardness  = 128;
     }
 }
-
 ```
 
-```
-Viewer.exe Test01.bascii -r 0 -o test.png
-```
-
-
-![SS1](Samples/Viewer/test.png)
+`Viewer.exe Test01.bascii -r 0 -o ` [test.png](Samples/Viewer/test.png)
 
 
 ## Building
