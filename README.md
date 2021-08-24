@@ -31,7 +31,9 @@ Usage: Viewer.exe <options>
 
 ```
 
-As an example, the following image was rendered using the bAscii file.
+### Example 
+
+The following image was rendered using the bAscii file.
 
 ```
 Global:  {
