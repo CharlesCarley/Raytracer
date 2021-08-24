@@ -1,12 +1,15 @@
 ﻿# RayTracer
 
-Is a small custom ray tracer for fun that runs either on the CPU or GPU. 
-The GPU implementation is written in CUDA. 
+Is a small custom ray tracer for educational purposes that runs either on the CPU or GPU. The GPU implementation is written in CUDA. It provides a small code base to work with, and an area to experiment with different ray tracing techniques and optimization tactics. The primary goal is to strike a balance between quality and performance in real-time, as well as to understand the performance limitations of the ray tracing algorithm.
+
 
 ## File formats
 
-Scene information is provided [.bascii](https://github.com/CharlesCarley/bAscii) files. 
+Scene information is provided with [.bascii](https://github.com/CharlesCarley/bAscii) files. 
+
 The [Viewer](https://github.com/CharlesCarley/RayTracer/tree/master/Samples/Viewer) in the Samples directory is the main entry point.
+
+
 It provides the means to load a file, specify a backend and display a scene. 
 
 ### Invoking
@@ -32,6 +35,8 @@ Usage: Viewer.exe <options>
 ```
 
 As an example, the following image was rendered using the bAscii file.
+
+
 ```
 Global:  {
     scene = "Scene";
@@ -143,11 +148,6 @@ Viewer.exe Test01.bascii -r 0 -o test.png
 
 ![SS1](Samples/Viewer/test.png)
 
-
-
-### Goals 
-
-The primary goal is to strike a balance between quality and performance in real-time.
 
 ## Building
 
