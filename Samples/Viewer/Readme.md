@@ -1,6 +1,8 @@
 # Viewer 
 
-Viewer is a sample implementation of a scene viewer.
+Is a program that allows rendering a simple scene.  
+
+## Invoking
 
 ```
 Usage: Viewer.exe <options>
@@ -18,6 +20,9 @@ Usage: Viewer.exe <options>
 
 ```
 
+
+## Controls
+
 If the primary camera in the scene is set to interactive then the following input is valid.
 
 
@@ -33,8 +38,9 @@ If the primary camera in the scene is set to interactive then the following inpu
 | Num-pad 7-Key             | Orients the camera looking toward the -z axis                   |
 
 
-### Render mode flags 
-are a bit mask that can be used to control how the scene is rendered.
+## Render Flags 
+
+The render flags can be used to control how the scene is rendered.
 
 | Flag | Description                    |
 |:-----|:-------------------------------|
@@ -44,15 +50,15 @@ are a bit mask that can be used to control how the scene is rendered.
 | 8    | Render edges.                  |
 | 16   | Invert the color.              |
 
-#### mode keys
+### Setting the Flags
 
-| Input | Description  |
-|:------|:-------------|
-| 1-key | Sets flag 1  |
-| 2-key | Sets flag 2  |
-| 3-key | Sets flag 4  |
-| 4-key | Sets flag 8  |
-| 5-key | Sets flag 16 |
+| Keyboard Input | Description  |
+|:---------------|:-------------|
+| 1-key          | Sets flag 1  |
+| 2-key          | Sets flag 2  |
+| 3-key          | Sets flag 4  |
+| 4-key          | Sets flag 8  |
+| 5-key          | Sets flag 16 |
 
-Holding Shift while pressing one of the mode keys will toggle them together.
+Holding `Shift` while pressing one of the mode keys will toggle them together.
 
