@@ -15,8 +15,17 @@ This [link](Extras/Example.md) provides a usage example.
 
 
 ## Building
+This project builds with CMake and has the following external git repositories as dependencies.
 
-It uses CMake to generate its make files. 
++ [bAscii](https://github.com/CharlesCarley/bAscii)
++ [FileTools](https://github.com/CharlesCarley/FileTools)
++ [FreeImage](https://github.com/CharlesCarley/FreeImage)
++ [Image](https://github.com/CharlesCarley/Image)
++ [Math](https://github.com/CharlesCarley/Math)
++ [SDL](https://github.com/CharlesCarley/SDL)
++ [Window](https://github.com/CharlesCarley/Window)
++ [Utils](https://github.com/CharlesCarley/Utils)
+
 
 It has been tested with CMake's VisualStudio and Unix Makefile generators.   
 
