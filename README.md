@@ -29,9 +29,9 @@ This project builds with CMake and has the following external git repositories a
 
 It has been tested with CMake's VisualStudio and Unix Makefile generators.   
 
-## Defines 
+### Defines 
 
-Optional defines used in this project.
+Optional definitions used in this project.
 
 | Option                  | Description                         | Default |
 |:------------------------|:------------------------------------|:-------:|
