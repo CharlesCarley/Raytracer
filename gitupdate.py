@@ -26,7 +26,7 @@ def trim(line):
     line = line.replace(' ', '')
     return line
 
-def makeAbsolue(currentDir, relitaveDir):
+def makeAbsolute(currentDir, relitaveDir):
     return os.path.join(currentDir, relitaveDir)
 
 def checkUrl(url):
@@ -46,6 +46,9 @@ def checkShallow(shallow):
         return shallow
     return None
 
+def execProgram(args):
+    subprocess.call(args.split(' '))
+
 
 def changeDirectory(directory):
 
@@ -63,7 +66,7 @@ def changeDirectory(directory):
 def collectModules(currentDir, gitModulesFile):
     moduleDict = {}
     
-    file = open(makeAbsolue(currentDir, gitModulesFile), mode = 'r')
+    file = open(makeAbsolute(currentDir, gitModulesFile), mode = 'r')
     lines = file.readlines()
     file.close()
 
@@ -96,7 +99,7 @@ def collectModules(currentDir, gitModulesFile):
                 if (os.path.isabs(moduleDirectory)):
                     absPath = moduleDirectory
                 else:
-                    absPath = makeAbsolue(currentDir, moduleDirectory)
+                    absPath = makeAbsolute(currentDir, moduleDirectory)
 
                 if (os.path.isdir(absPath)):
                     variableDict["path"] = absPath
@@ -117,8 +120,8 @@ def initModules():
     # this is meant to be called from the same directory
     # as the module script.
 
-    subprocess.call("git submodule init")
-    subprocess.call("git submodule update --init --merge")
+    execProgram("git submodule init")
+    execProgram("git submodule update --init --merge")
 
 def updateModules(currentDir, moduleDict):
 
@@ -154,14 +157,14 @@ def updateModules(currentDir, moduleDict):
 
             if (shallowValue == False):
                 print("git checkout", branchStr)
-                subprocess.call("git checkout %s"%branchStr)
+                execProgram("git checkout %s"%branchStr)
                 print("git pull")
-                subprocess.call("git pull")
+                execProgram("git pull")
             else:
                 print("git clone", "-f -B ", branchStr)
-                subprocess.call("git checkout -f -B %s"%branchStr)
+                execProgram("git checkout -f -B %s"%branchStr)
                 print("git pull", url, branchStr)
-                subprocess.call("git pull %s %s"%(url, branchStr))
+                execProgram("git pull %s %s"%(url, branchStr))
 
 def main():
     currentDir = os.getcwd()
